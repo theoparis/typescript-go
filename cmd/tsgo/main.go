@@ -14,16 +14,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/microsoft/typescript-go/internal/ast"
-	"github.com/microsoft/typescript-go/internal/bundled"
-	ts "github.com/microsoft/typescript-go/internal/compiler"
-	"github.com/microsoft/typescript-go/internal/compiler/diagnostics"
-	"github.com/microsoft/typescript-go/internal/core"
-	"github.com/microsoft/typescript-go/internal/diagnosticwriter"
-	"github.com/microsoft/typescript-go/internal/execute"
-	"github.com/microsoft/typescript-go/internal/scanner"
-	"github.com/microsoft/typescript-go/internal/tspath"
-	"github.com/microsoft/typescript-go/internal/vfs/osvfs"
+	"github.com/microsoft/typescript-go/core/ast"
+	"github.com/microsoft/typescript-go/core/bundled"
+	ts "github.com/microsoft/typescript-go/core/compiler"
+	"github.com/microsoft/typescript-go/core/compiler/diagnostics"
+	"github.com/microsoft/typescript-go/core/core"
+	"github.com/microsoft/typescript-go/core/diagnosticwriter"
+	"github.com/microsoft/typescript-go/core/execute"
+	"github.com/microsoft/typescript-go/core/scanner"
+	"github.com/microsoft/typescript-go/core/tspath"
+	"github.com/microsoft/typescript-go/core/vfs/osvfs"
 )
 
 func printDiagnostic(d *ast.Diagnostic, level int, comparePathOptions tspath.ComparePathsOptions) {

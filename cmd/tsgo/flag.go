@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/microsoft/typescript-go/internal/core"
+	"github.com/microsoft/typescript-go/core/core"
 )
 
 var errParse = errors.New("parse error")

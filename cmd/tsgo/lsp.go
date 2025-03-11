@@ -7,10 +7,10 @@ import (
 	"io"
 	"os"
 
-	"github.com/microsoft/typescript-go/internal/bundled"
-	"github.com/microsoft/typescript-go/internal/core"
-	"github.com/microsoft/typescript-go/internal/lsp"
-	"github.com/microsoft/typescript-go/internal/vfs/osvfs"
+	"github.com/microsoft/typescript-go/core/bundled"
+	"github.com/microsoft/typescript-go/core/core"
+	"github.com/microsoft/typescript-go/core/lsp"
+	"github.com/microsoft/typescript-go/core/vfs/osvfs"
 )
 
 func runLSP(args []string) int {
