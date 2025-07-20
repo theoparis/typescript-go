@@ -6,12 +6,12 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/microsoft/typescript-go/internal/bundled"
-	"github.com/microsoft/typescript-go/internal/core"
-	"github.com/microsoft/typescript-go/internal/lsp"
-	"github.com/microsoft/typescript-go/internal/pprof"
-	"github.com/microsoft/typescript-go/internal/tspath"
-	"github.com/microsoft/typescript-go/internal/vfs/osvfs"
+	"github.com/microsoft/typescript-go/bundled"
+	"github.com/microsoft/typescript-go/core"
+	"github.com/microsoft/typescript-go/lsp"
+	"github.com/microsoft/typescript-go/pprof"
+	"github.com/microsoft/typescript-go/tspath"
+	"github.com/microsoft/typescript-go/vfs/osvfs"
 )
 
 func runLSP(args []string) int {

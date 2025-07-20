@@ -1,0 +1,49 @@
+package fourslash_test
+
+import (
+	"testing"
+
+	"github.com/microsoft/typescript-go/fourslash"
+	"github.com/microsoft/typescript-go/ls"
+	"github.com/microsoft/typescript-go/lsp/lsproto"
+	"github.com/microsoft/typescript-go/testutil"
+)
+
+func TestCompletionsOverridingMethod9(t *testing.T) {
+	t.Parallel()
+	t.Skip()
+	defer testutil.RecoverAndFail(t, "Panic on fourslash test")
+	const content = `// @Filename: a.ts
+// @newline: LF
+interface IFoo {
+    a?: number;
+    b?(x: number): void;
+}
+class Foo implements IFoo {
+    /**/
+}`
+	f := fourslash.NewFourslash(t, nil /*capabilities*/, content)
+	f.VerifyCompletions(t, "", &fourslash.CompletionsExpectedList{
+		IsIncomplete: false,
+		ItemDefaults: &fourslash.CompletionsExpectedItemDefaults{
+			CommitCharacters: &[]string{},
+			EditRange:        ignored,
+		},
+		Items: &fourslash.CompletionsExpectedItems{
+			Includes: []fourslash.CompletionsExpectedItem{
+				&lsproto.CompletionItem{
+					Label:      "a",
+					InsertText: ptrTo("a?: number;"),
+					FilterText: ptrTo("a"),
+					SortText:   ptrTo(string(ls.SortTextLocationPriority)),
+				},
+				&lsproto.CompletionItem{
+					Label:      "b",
+					InsertText: ptrTo("b(x: number): void {\n}"),
+					FilterText: ptrTo("b"),
+					SortText:   ptrTo(string(ls.SortTextLocationPriority)),
+				},
+			},
+		},
+	})
+}

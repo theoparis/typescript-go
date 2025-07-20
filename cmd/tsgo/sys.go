@@ -6,11 +6,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/microsoft/typescript-go/internal/bundled"
-	"github.com/microsoft/typescript-go/internal/execute"
-	"github.com/microsoft/typescript-go/internal/tspath"
-	"github.com/microsoft/typescript-go/internal/vfs"
-	"github.com/microsoft/typescript-go/internal/vfs/osvfs"
+	"github.com/microsoft/typescript-go/bundled"
+	"github.com/microsoft/typescript-go/execute"
+	"github.com/microsoft/typescript-go/tspath"
+	"github.com/microsoft/typescript-go/vfs"
+	"github.com/microsoft/typescript-go/vfs/osvfs"
 )
 
 type osSys struct {

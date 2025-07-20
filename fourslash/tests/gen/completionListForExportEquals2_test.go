@@ -1,0 +1,41 @@
+package fourslash_test
+
+import (
+	"testing"
+
+	"github.com/microsoft/typescript-go/fourslash"
+	"github.com/microsoft/typescript-go/ls"
+	"github.com/microsoft/typescript-go/lsp/lsproto"
+	"github.com/microsoft/typescript-go/testutil"
+)
+
+func TestCompletionListForExportEquals2(t *testing.T) {
+	t.Parallel()
+
+	defer testutil.RecoverAndFail(t, "Panic on fourslash test")
+	const content = `// @Filename: /node_modules/foo/index.d.ts
+export = Foo;
+interface Foo { bar: number; }
+declare namespace Foo {
+    interface Static {}
+}
+// @Filename: /a.ts
+import { /**/ } from "foo";`
+	f := fourslash.NewFourslash(t, nil /*capabilities*/, content)
+	f.VerifyCompletions(t, "", &fourslash.CompletionsExpectedList{
+		IsIncomplete: false,
+		ItemDefaults: &fourslash.CompletionsExpectedItemDefaults{
+			CommitCharacters: &defaultCommitCharacters,
+			EditRange:        ignored,
+		},
+		Items: &fourslash.CompletionsExpectedItems{
+			Exact: []fourslash.CompletionsExpectedItem{
+				"Static",
+				&lsproto.CompletionItem{
+					Label:    "type",
+					SortText: ptrTo(string(ls.SortTextGlobalsOrKeywords)),
+				},
+			},
+		},
+	})
+}
